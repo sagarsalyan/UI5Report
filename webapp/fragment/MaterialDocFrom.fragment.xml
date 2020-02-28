@@ -1,0 +1,20 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog
+		id="materialDocFromHelp"
+		title="Material Document Detail"
+		class="sapUiPopupWithPadding"
+		items="{MaterialDocFromModel>/results}"
+		search="_handleMaterialDocSearch"
+		liveChange="_handleMaterialDocSearch"
+		confirm="_handleMaterialDocFromHelpClose"
+		cancel="_handleMaterialDocFromHelpClose">
+		<StandardListItem
+			icon="{ProductPicUrl}"
+			iconDensityAware="false"
+			iconInset="false"
+			title="{MaterialDocFromModel>Zmatdocnum}"
+			description="" />
+	</SelectDialog>
+</core:FragmentDefinition>

@@ -1,0 +1,20 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog
+		id="purchaseOrderFromHelp"
+		title="Purchase Order Details"
+		class="sapUiPopupWithPadding"
+		items="{PurchaseOrderFromModel>/results}"
+		search="_handlePurchaseOrderSearch"
+		liveChange="_handlePurchaseOrderSearch"
+		confirm="_handlePurchaseOrderFromHelpClose"
+		cancel="_handlePurchaseOrderFromHelpClose">
+		<StandardListItem
+			icon="{ProductPicUrl}"
+			iconDensityAware="false"
+			iconInset="false"
+			title="{PurchaseOrderFromModel>Zpurdocnum}"
+			description="" />
+	</SelectDialog>
+</core:FragmentDefinition>

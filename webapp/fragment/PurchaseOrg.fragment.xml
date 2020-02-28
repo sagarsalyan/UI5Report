@@ -1,0 +1,20 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog
+		id="purchaseOrgHelp"
+		title="Purchase Organisation"
+		class="sapUiPopupWithPadding"
+		items="{PurchaseOrgModel>/results}"
+		search="_handlePurchaseOrgSearch"
+		liveChange="_handlePurchaseOrgSearch"
+		confirm="_handlePurchaseHelpClose"
+		cancel="_handlePurchaseHelpClose">
+		<StandardListItem
+			icon="{ProductPicUrl}"
+			iconDensityAware="false"
+			iconInset="false"
+			title="{PurchaseOrgModel>PurchasingOrg}"
+			description="" />
+	</SelectDialog>
+</core:FragmentDefinition>

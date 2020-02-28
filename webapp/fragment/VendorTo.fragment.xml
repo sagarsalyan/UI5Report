@@ -1,0 +1,20 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog
+		id="vendorToHelp"
+		title="Vendors"
+		class="sapUiPopupWithPadding"
+		items="{VendorToModel>/results}"
+		search="_handleVendorSearch"
+		liveChange="_handleVendorSearch"
+		confirm="_handleVendorHelpToClose"
+		cancel="_handleVendorHelpToClose">
+		<StandardListItem
+			icon="{ProductPicUrl}"
+			iconDensityAware="false"
+			iconInset="false"
+			title="{VendorToModel>FirstName}"
+			description="{VendorToModel>VendorNumber}" />
+	</SelectDialog>
+</core:FragmentDefinition>

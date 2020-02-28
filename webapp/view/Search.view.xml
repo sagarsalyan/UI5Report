@@ -1,0 +1,190 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:t="sap.ui.table" xmlns="sap.m" xmlns:f="sap.ui.layout.form"
+	controllerName="Application.ProductVendor.controller.Search" xmlns:l="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml">
+	<App>
+		<pages>
+			<Page title="{i18n>vendorsreport}" enableScrolling="false" >
+				<content>
+					<VBox height="100%">
+					<Panel id="panelsearch" expandable="true" expanded="true" headerText="Search" width="auto" class="sapUiResponsiveMargin">
+						<content>
+							<VBox class="sapUiSmallMargin">
+								<f:SimpleForm id="SimpleFormChange354" editable="true" adjustLabelSpan="false" layout="ResponsiveGridLayout" singleContainerFullSize="false"
+									columnsXL="1" columnsL="1" columnsM="1">
+									<Label text="{i18n>vendor}" labelFor="svendor">
+										<layoutData>
+											<l:GridData span="XL2 L2 M4 S4"/>
+										</layoutData>
+									</Label>
+									<Input width="100%" required="true" placeholder="{i18n>from}" id="vendorfrom"  showValueHelp="true" valueHelpRequest="handleVendorHelpFrom"
+									 valueHelpOnly="true">
+										
+										<layoutData>
+											<l:GridData span="XL2 L2 M4 S4"/>
+										</layoutData>
+									</Input>
+									<Input width="100%" required="true" placeholder="{i18n>to}" id="vendorto" showValueHelp="true" valueHelpRequest="handleVendorHelpTo"
+										valueHelpOnly="true">
+										
+										<layoutData>
+											<l:GridData span="XL2 L2 M4 S4"/>
+										</layoutData>
+									</Input>
+									<Label text="{i18n>purorg}" labelFor="spurchase">
+										<layoutData>
+											<l:GridData span="XL2 L2 M4 S4"/>
+										</layoutData>
+									</Label>
+									<Input width="100%" required="true" placeholder="{i18n>purorg}" id="purchaseorg" showValueHelp="true" valueHelpRequest="handlePurchaseHelp"
+										valueHelpOnly="true">
+										
+										<layoutData>
+											<l:GridData span="XL2 L4 M8 S8"/>
+										</layoutData>
+									</Input>
+									<!--<core:Title/>-->
+									<Label text="{i18n>purorder}" labelFor="spurchaseorder">
+										<layoutData>
+											<l:GridData span="XL2 L2 M4 S4"/>
+										</layoutData>
+									</Label>
+									<Input placeholder="{i18n>from}" required="true" id="purchaseorderfrom" showValueHelp="true" valueHelpRequest="handlePurchaseOrderFromHelp" valueHelpOnly="true">
+										<layoutData>
+											<l:GridData span="XL2 L2 M4 S4"/>
+										</layoutData>
+									</Input>
+									<Input placeholder="{i18n>to}" required="true" id="purchaseorderto" showValueHelp="true" valueHelpRequest="handlePurchaseOrderToHelp" valueHelpOnly="true">
+										<layoutData>
+											<l:GridData span="XL2 L2 M4 S4"/>
+										</layoutData>
+									</Input>
+									<Label text="{i18n>matdoc}" labelFor="smaterialdoc">
+										<layoutData>
+											<l:GridData span="XL2 L2 M4 S4"/>
+										</layoutData>
+									</Label>
+									<Input placeholder="{i18n>from}" required="true" id="materialdocfrom" showValueHelp="true" valueHelpRequest="handleMaterialDocFromHelp" valueHelpOnly="true">
+										<layoutData>
+											<l:GridData span="XL2 L2 M4 S4"/>
+										</layoutData>
+									</Input>
+									<Input placeholder="{i18n>to}" required="true" id="materialdocto" showValueHelp="true" valueHelpRequest="handleMaterialDocToHelp" valueHelpOnly="true">
+										<layoutData>
+											<l:GridData span="XL2 L2 M4 S4"/>
+										</layoutData>
+									</Input>
+									<Label/>
+									<FlexBox alignItems="End" justifyContent="End">
+										<Button width="100%" text="{i18n>generate}" type="Emphasized" press="onSearch"/>
+										<!--<Button width="100%" text="Crossappnav" type="Emphasized" press="handleLinkPurDocnum"/>-->
+									</FlexBox>
+								</f:SimpleForm>
+							</VBox>
+						</content>
+					</Panel>
+
+					<Panel id="panelreport" expandable="true"   headerText="Report" expanded="false" width="auto" class="sapUiResponsiveMargin">
+						<!--<headerToolbar>-->
+						<!--	<Toolbar height="3rem" style="Clear">-->
+						<!--		<Title text="Report"/>-->
+						<!--		<ToolbarSpacer/>-->
+						<!--		<Button text="Download" icon="sap-icon://download" press="onDownload"/>-->
+						<!--	</Toolbar>-->
+						<!--</headerToolbar>-->
+						<content>
+							<FlexBox justifyContent = "End">
+								<Button text="{i18n>download}" icon="sap-icon://download" press="onDownload"/>
+							</FlexBox>
+							<ScrollContainer width="100%" height="350px" horizontal="true" vertical="true" focusable="true">
+
+								<Table id="idReportTable" 
+									items="{
+										path: 'reportModel>/results',
+										sorter: {
+											path: 'reportModel>FirstName',
+											descending: false
+											
+										}
+									}"
+									
+									popinLayout="Block"
+									sticky="ColumnHeaders">
+									<columns>
+										<Column mergeDuplicates="true">
+											<Text text="{i18n>vendor}"/>
+										</Column>
+										
+										<Column>
+											<Text text="{i18n>matdocnum}"/>
+										</Column>
+										<Column minScreenWidth="Tablet"
+											demandPopin="true">
+											<Text text="{i18n>purdoc}"/>
+										</Column>
+										<Column minScreenWidth="Tablet"
+											demandPopin="true">
+											<Text text="{i18n>docdate}"/>
+										</Column>
+										<Column minScreenWidth="Tablet"
+											demandPopin="true">
+											<Text text="{i18n>matnum} &amp; {i18n>descrip}"/>
+										</Column>
+										<Column minScreenWidth="Tablet"
+											demandPopin="true">
+											<Text text="{i18n>plant}"/>
+										</Column>
+										<Column minScreenWidth="Tablet"
+											demandPopin="true">
+											<Text text="{i18n>stoloc}"/>
+										</Column>
+										<Column minScreenWidth="Tablet"
+											demandPopin="true">
+											<Text text="{i18n>poqty}"/>
+										</Column>
+										<Column minScreenWidth="Tablet"
+											demandPopin="true">
+											<Text text="{i18n>oun}"/>
+										</Column>
+										<Column minScreenWidth="Tablet"
+											demandPopin="true">
+											<Text text="{i18n>netprice}"/>
+										</Column>
+										<Column minScreenWidth="Tablet"
+											demandPopin="true">
+											<Text text="{i18n>curr}"/>
+										</Column>
+										<Column minScreenWidth="Tablet"
+											demandPopin="true">
+											<Text text="{i18n>recqty}"/>
+										</Column>
+									</columns>
+									<items>
+										<ColumnListItem>
+											<cells>
+												<ObjectIdentifier title="{reportModel>FirstName}" text="{reportModel>ZVENDORNUM}" titleActive="true" titlePress="handleLinkVennum"/>
+												<Link text="{reportModel>Zmatdocnum}" press="handleLinkMatDocnum"/>
+												<Link text="{reportModel>Zpurdocnum}" press="handleLinkPurDocnum"/>
+												<Text text="{path:'reportModel>Zpurdocdate',formatter:'.formatter.formatDate'}"/>
+												<ObjectIdentifier title="{reportModel>Ztext}" text="{reportModel>Zmaterialnum}" titleActive="true" titlePress="handleLinkMat"/>
+												<Text text="{reportModel>Zplant}"/>
+												<Text text="{reportModel>Zstorageloc}"/>
+												<Text text="{reportModel>Zquant}"/>
+												<Text text="{reportModel>Zquantkey}"/>
+												<Text text="{reportModel>Zprice}"/>
+												<Text text="{reportModel>Zcurrkey}"/>
+												<Text text="{reportModel>Zrecievquant}"/>
+											</cells>
+										</ColumnListItem>
+									</items>
+								</Table>
+							
+							
+							</ScrollContainer>
+						</content>
+						
+					</Panel>
+					</VBox>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
