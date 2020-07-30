@@ -21,7 +21,7 @@ sap.ui.define([
 		onInit: function () {
 			
 			debugger;
-			
+			var SyUname = sap.ushell.Container.getService("UserInfo").getId();
 			var batchUrls = [];
 
 			var that = this;
